@@ -8,6 +8,8 @@ namespace RetrospectiveGame
 {
     public interface ICombatHandler
     {
+        IDiceRoller DiceRoller { get; set; }
+
         void AttackRound(ICharacter attacker, ICharacter defender);
         string CheckIfAttackSuccessful(ICharacter attacker, ICharacter defender);
     }
@@ -15,7 +17,13 @@ namespace RetrospectiveGame
     public class CombatHandler : ICombatHandler
     {
         private const int maxValue = 20;
-        private readonly IDiceRoller diceRoller = new DiceRoller();
+        public IDiceRoller DiceRoller { get; set; }
+
+        public CombatHandler()
+        {
+            DiceRoller = new DiceRoller();
+        }
+
         public void AttackRound(ICharacter attacker, ICharacter defender)
         {
             var attackStatus = CheckIfAttackSuccessful(attacker, defender);
@@ -28,7 +36,7 @@ namespace RetrospectiveGame
             var attackSuccessfullness = "Miss!";
             var attackBonus = (attacker.Strength - 10) / 2;
             var modifier = attacker.Modifier;
-            var diceRoll = diceRoller.RollDice();
+            var diceRoll = DiceRoller.RollDice();
             int totalAttackingPower = GetTotalAttackingPower(attackBonus, modifier, diceRoll);
 
             if (diceRoll == maxValue)
@@ -44,7 +52,7 @@ namespace RetrospectiveGame
 
         private string CheckForCritical(int defense, int attackBonus, int modifier)
         {
-            var diceRollForCritical = diceRoller.RollDice();
+            var diceRollForCritical = DiceRoller.RollDice();
             var criticalTestValue = GetTotalAttackingPower(attackBonus, modifier, diceRollForCritical);
             if (criticalTestValue > defense)            
                 return "Critical!";            
@@ -59,7 +67,7 @@ namespace RetrospectiveGame
 
         private int CalculateAttackDamage(string attackStatus)
         {
-            return diceRoller.RollDice(4, 10);
+            return DiceRoller.RollDice(4, 10);
         }
     }
 }
