@@ -25,7 +25,7 @@ namespace RetrospectiveGameTests
             _char1.DiceRoller = mockDice.Object;
         }
         [Test]
-        public void TestSetNewStats()
+        public void SetNewStats_Success()
         {
             //Arrange
             var expectedResult = 10;
@@ -36,6 +36,21 @@ namespace RetrospectiveGameTests
 
             //Assert
             Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [Test]
+        public void TakeDamage_Success()
+        {
+            //Arrange
+            var expectedResult = 15;
+            _char1.SetNewStats();
+
+            //Act
+            _char1.TakeDamage(5);
+            var actualResult = _char1.Life;
+
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);      
         }
     }
 }

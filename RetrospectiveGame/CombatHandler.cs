@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace RetrospectiveGame
 {
-    class CombatHandler
+    public interface ICombatHandler
+    {
+        void AttackRound(ICharacter attacker, ICharacter defender);
+        string CheckIfAttackSuccessful(ICharacter attacker, ICharacter defender);
+    }
+
+    public class CombatHandler : ICombatHandler
     {
         private const int maxValue = 20;
         private readonly IDiceRoller diceRoller = new DiceRoller();
@@ -17,7 +23,7 @@ namespace RetrospectiveGame
             defender.TakeDamage(attackDamage);
         }
 
-        private string CheckIfAttackSuccessful(ICharacter attacker, ICharacter defender)
+        public string CheckIfAttackSuccessful(ICharacter attacker, ICharacter defender)
         {
             var attackSuccessfullness = "Miss!";
             var attackBonus = (attacker.Strength - 10) / 2;
@@ -27,7 +33,7 @@ namespace RetrospectiveGame
 
             if (diceRoll == maxValue)
             {
-                attackSuccessfullness = CheckForCritical(defender.Constitution, attackSuccessfullness, attackBonus, modifier);
+                attackSuccessfullness = CheckForCritical(defender.Constitution, attackBonus, modifier);
             }
             else if (diceRoll > defender.Constitution)
             {
@@ -36,25 +42,24 @@ namespace RetrospectiveGame
             return attackSuccessfullness;
         }
 
-        private string CheckForCritical(int defense, string attackSuccessfullness, int attackBonus, int modifier)
+        private string CheckForCritical(int defense, int attackBonus, int modifier)
         {
             var diceRollForCritical = diceRoller.RollDice();
             var criticalTestValue = GetTotalAttackingPower(attackBonus, modifier, diceRollForCritical);
             if (criticalTestValue > defense)            
-                attackSuccessfullness = "Critical!";            
-            else
-                attackSuccessfullness = "Hit!";
-            return attackSuccessfullness;
+                return "Critical!";            
+            return "Hit!";
         }
 
         private int GetTotalAttackingPower(int attackBonus, int modifier, int diceRoll)
         {
-            throw new NotImplementedException();
+            var totalAttackingPower = attackBonus + modifier + diceRoll;
+            return totalAttackingPower;
         }
 
         private int CalculateAttackDamage(string attackStatus)
         {
-            throw new NotImplementedException();
+            return diceRoller.RollDice(4, 10);
         }
     }
 }
