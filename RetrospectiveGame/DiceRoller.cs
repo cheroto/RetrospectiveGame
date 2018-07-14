@@ -17,7 +17,7 @@ namespace RetrospectiveGame
 
         public int RollDice(int min, int max)
         {
-            return randGenerator.Next(8, 20);
+            return randGenerator.Next(min, max);
         }
     }
 }
