@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2027
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetrospectiveGame", "RetrospectiveGame\RetrospectiveGame.csproj", "{3503367B-D15B-4305-B8AE-FA8DA66591A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetrospectiveGameTests", "RetrospectiveGameTests\RetrospectiveGameTests.csproj", "{8F66854D-8FCC-4DC8-AFAD-BD2D63E042EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3503367B-D15B-4305-B8AE-FA8DA66591A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3503367B-D15B-4305-B8AE-FA8DA66591A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3503367B-D15B-4305-B8AE-FA8DA66591A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3503367B-D15B-4305-B8AE-FA8DA66591A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F66854D-8FCC-4DC8-AFAD-BD2D63E042EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F66854D-8FCC-4DC8-AFAD-BD2D63E042EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F66854D-8FCC-4DC8-AFAD-BD2D63E042EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F66854D-8FCC-4DC8-AFAD-BD2D63E042EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D6EAE324-2E8C-490E-919E-79EFDBB9BF13}
+	EndGlobalSection
+EndGlobal
