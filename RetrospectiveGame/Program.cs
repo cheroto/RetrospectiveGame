@@ -16,16 +16,20 @@ namespace RetrospectiveGame
             var combatHandler = new CombatHandler();
             var roundNumber = 0;
 
-
-            Console.WriteLine("***********************************");
-            Console.WriteLine("******Welcome to RetroBattle!******");
-            Console.WriteLine("***********************************");
+            PlotIntroText();
 
             ShowStats(char1);
             ShowStats(char2);
 
             DoBattle(char1, char2, combatHandler, roundNumber);
 
+        }
+
+        private static void PlotIntroText()
+        {
+            Console.WriteLine("***********************************");
+            Console.WriteLine("******Welcome to RetroBattle!******");
+            Console.WriteLine("***********************************");
         }
 
         private static void ShowStats(Character character)
@@ -60,12 +64,13 @@ namespace RetrospectiveGame
         private static void PlayChar2DeathRattle(ICharacter character)
         {
             Console.Clear();
-            Console.WriteLine(string.Format("{0} valiantly fights despite numerous broken bones and cuts throughout his body.", character.Name));
-            Console.WriteLine("A moment of distraction, however, leads to a sword through the heart.");
+            Console.WriteLine(string.Format("{0} constantly parries sword attacks but exhaustion is clearly taking it's toll.", character.Name));
+            Console.WriteLine("With sluggish responses, he is finally unable to parry a strike aiming for the neck.");
             Console.WriteLine();
             System.Threading.Thread.Sleep(1000);
-            Console.WriteLine(string.Format("{0} stumbles to the ground, coughs blood one last time and dies.", character.Name));
-            Console.WriteLine(GameOverString);
+            Console.WriteLine(string.Format("{0}'s body stumbles to the ground, head rolling on the opposite direction. " +
+                "After a few last twiches, he is gone", character.Name));
+            Console.WriteLine(YouWinString);
         }
 
         private static void PlayChar1DeathRattle(ICharacter character)
@@ -85,29 +90,29 @@ namespace RetrospectiveGame
             Console.WriteLine(string.Format("Round {0}", roundNumber));
             Console.WriteLine();
 
-            Console.WriteLine(string.Format("{0} has a total of {1} life points.", char1.Name, char1.Life));
-            Console.WriteLine(string.Format("{0} has a total of {1} life points.", char2.Name, char2.Life));
+            ShowLife(char1);
+            ShowLife(char2);
             Console.WriteLine();
 
-            var char2DamageTaken = combatHandler.GetAttackRoundDamage(char1, char2);
-            char2.TakeDamage(char2DamageTaken);
+            AttackSequence(char1, char2, combatHandler);
+            AttackSequence(char2, char1, combatHandler);
+        }
 
-            Console.WriteLine(string.Format("{0} attacks!", char1.Name));
-            System.Threading.Thread.Sleep(500);
+        private static void ShowLife(ICharacter character)
+        {
+            Console.WriteLine(string.Format("{0} has a total of {1} life points.", character.Name, character.Life));
+        }
+
+        private static void AttackSequence(ICharacter attacker, ICharacter defender, ICombatHandler combatHandler)
+        {
+            var damageTaken = combatHandler.GetAttackRoundDamage(attacker, defender);
+            defender.TakeDamage(damageTaken);
+
+            Console.WriteLine(string.Format("{0} attacks!", attacker.Name));
+            System.Threading.Thread.Sleep(1000);
             Console.WriteLine(combatHandler.LastAttackStatus);
-            if (char2DamageTaken > 0) Console.WriteLine(string.Format("{0} has taken of {1} life points.", char2.Name, char2DamageTaken));
+            if (damageTaken > 0) Console.WriteLine(string.Format("{0} has taken of {1} life points.", defender.Name, damageTaken));
             Console.WriteLine();
-
-
-            var char1DamageTaken = combatHandler.GetAttackRoundDamage(char2, char1);
-            char1.TakeDamage(char1DamageTaken);
-
-            Console.WriteLine(string.Format("{0} attacks!", char2.Name));
-            System.Threading.Thread.Sleep(500);
-            Console.WriteLine(combatHandler.LastAttackStatus);
-            if (char1DamageTaken > 0 ) Console.WriteLine(string.Format("{0} has taken of {1} life points.", char1.Name, char1DamageTaken));
-            Console.WriteLine();
-
         }
 
         private const string GameOverString = @"  _______      ___      .___  ___.  _______      ______   ____    ____  _______ .______      
@@ -117,5 +122,13 @@ namespace RetrospectiveGame
 |  |__| |  /  _____  \  |  |  |  | |  |____    |  `--'  |    \    /    |  |____ |  |\  \----.
  \______| /__/     \__\ |__|  |__| |_______|    \______/      \__/     |_______|| _| `._____|
                                                                                              ";
+
+        private const string YouWinString = @"____    ____  ______    __    __     ____    __    ____  __  .__   __.  __  
+\   \  /   / /  __  \  |  |  |  |    \   \  /  \  /   / |  | |  \ |  | |  | 
+ \   \/   / |  |  |  | |  |  |  |     \   \/    \/   /  |  | |   \|  | |  | 
+  \_    _/  |  |  |  | |  |  |  |      \            /   |  | |  . `  | |  | 
+    |  |    |  `--'  | |  `--'  |       \    /\    /    |  | |  |\   | |__| 
+    |__|     \______/   \______/         \__/  \__/     |__| |__| \__| (__) 
+                                                                            ";
     }
 }
