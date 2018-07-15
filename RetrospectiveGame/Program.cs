@@ -48,10 +48,10 @@ namespace RetrospectiveGame
             Console.WriteLine(string.Format("Stats for {0}:", character.Name));
             Console.WriteLine();
 
-            Console.WriteLine(string.Format("Strength: {0}:", character.Strength));
-            Console.WriteLine(string.Format("Constitution: {0}:", character.Constitution));
-            Console.WriteLine(string.Format("Modifier: {0}:", character.Modifier));
-            Console.WriteLine(string.Format("Life: {0}:", character.Life));
+            Console.WriteLine(string.Format("Strength: {0}", character.Strength));
+            Console.WriteLine(string.Format("Constitution: {0}", character.Constitution));
+            Console.WriteLine(string.Format("Modifier: {0}", character.Modifier));
+            Console.WriteLine(string.Format("Life: {0}", character.Life));
 
             Console.WriteLine();
             Console.WriteLine("***********************************");
@@ -128,7 +128,7 @@ namespace RetrospectiveGame
             Console.WriteLine(string.Format("{0} attacks!", attacker.Name));
             System.Threading.Thread.Sleep(1000);
             Console.WriteLine(combatHandler.LastAttackStatus);
-            if (damageTaken > 0) Console.WriteLine(string.Format("{0} has taken of {1} life points.", defender.Name, damageTaken));
+            if (damageTaken > 0) Console.WriteLine(string.Format("{0} has lost {1} life points.", defender.Name, damageTaken));
             Console.WriteLine();
         }
 
