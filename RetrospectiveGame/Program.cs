@@ -64,23 +64,31 @@ namespace RetrospectiveGame
         private static void PlayChar2DeathRattle(ICharacter character)
         {
             Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine();
+            System.Threading.Thread.Sleep(500);
             Console.WriteLine(string.Format("{0} constantly parries sword attacks but exhaustion is clearly taking it's toll.", character.Name));
             Console.WriteLine("With sluggish responses, he is finally unable to parry a strike aiming for the neck.");
             Console.WriteLine();
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(3000);
             Console.WriteLine(string.Format("{0}'s body stumbles to the ground, head rolling on the opposite direction. " +
-                "After a few last twiches, he is gone", character.Name));
+                "After a few last twiches, he is gone.", character.Name));
+            System.Threading.Thread.Sleep(3000);
             Console.WriteLine(YouWinString);
         }
 
         private static void PlayChar1DeathRattle(ICharacter character)
         {
             Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine();
+            System.Threading.Thread.Sleep(500);
             Console.WriteLine(string.Format("{0} valiantly fights despite numerous broken bones and cuts throughout his body.", character.Name));
             Console.WriteLine("A moment of distraction, however, leads to a sword through the heart.");
             Console.WriteLine();
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(3000);
             Console.WriteLine(string.Format("{0} stumbles to the ground, coughs blood one last time and dies.", character.Name));
+            System.Threading.Thread.Sleep(3000);
             Console.WriteLine(GameOverString);
         }
 
