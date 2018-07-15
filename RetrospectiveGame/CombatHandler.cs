@@ -10,7 +10,7 @@ namespace RetrospectiveGame
     {
         IDiceRoller DiceRoller { get; set; }
 
-        int AttackRoundDamage(ICharacter attacker, ICharacter defender);
+        int GetAttackRoundDamage(ICharacter attacker, ICharacter defender);
         string CheckIfAttackSuccessful(ICharacter attacker, ICharacter defender);
     }
 
@@ -21,10 +21,10 @@ namespace RetrospectiveGame
 
         public CombatHandler()
         {
-            DiceRoller = new DiceRoller();
+            DiceRoller = RetrospectiveGame.DiceRoller.Instance;
         }
 
-        public int AttackRoundDamage(ICharacter attacker, ICharacter defender)
+        public int GetAttackRoundDamage(ICharacter attacker, ICharacter defender)
         {
             var attackStatus = CheckIfAttackSuccessful(attacker, defender);
             var attackDamage = CalculateAttackDamage(attackStatus);

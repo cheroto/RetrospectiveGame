@@ -34,7 +34,7 @@ namespace RetrospectiveGame
         public Character(string name)
         {
             Name = name;
-            DiceRoller = new DiceRoller();
+            DiceRoller = RetrospectiveGame.DiceRoller.Instance;
             SetNewStats();
         }
 

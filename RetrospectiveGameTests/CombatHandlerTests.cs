@@ -29,7 +29,6 @@ namespace RetrospectiveGameTests
             };
             _mockChar1.Setup(c => c.Strength).Returns(16);
             _mockChar2.Setup(c => c.Constitution).Returns(14);
-            _mockChar2.SetupProperty(c => c.Life, 28);
 
         }
 
@@ -57,7 +56,7 @@ namespace RetrospectiveGameTests
             var expectedResult = 8;
 
             //Act
-            var actualResult = combatHandler.AttackRoundDamage(_mockChar1.Object, _mockChar2.Object);
+            var actualResult = combatHandler.GetAttackRoundDamage(_mockChar1.Object, _mockChar2.Object);
             
             //Assert
             Assert.AreEqual(expectedResult, actualResult);
