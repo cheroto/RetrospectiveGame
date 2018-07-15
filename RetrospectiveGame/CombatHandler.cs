@@ -9,15 +9,18 @@ namespace RetrospectiveGame
     public interface ICombatHandler
     {
         IDiceRoller DiceRoller { get; set; }
+        string LastAttackStatus { get; set; }
 
         int GetAttackRoundDamage(ICharacter attacker, ICharacter defender);
         string CheckIfAttackSuccessful(ICharacter attacker, ICharacter defender);
+        bool AreCharactersAlive(ICharacter char1, ICharacter char2);
     }
 
     public class CombatHandler : ICombatHandler
     {
         private const int maxValue = 20;
         public IDiceRoller DiceRoller { get; set; }
+        public string LastAttackStatus { get; set; }
 
         public CombatHandler()
         {
@@ -26,8 +29,8 @@ namespace RetrospectiveGame
 
         public int GetAttackRoundDamage(ICharacter attacker, ICharacter defender)
         {
-            var attackStatus = CheckIfAttackSuccessful(attacker, defender);
-            var attackDamage = CalculateAttackDamage(attackStatus);
+            LastAttackStatus = CheckIfAttackSuccessful(attacker, defender);
+            var attackDamage = CalculateAttackDamage(LastAttackStatus);
             return attackDamage;
         }
 
@@ -48,6 +51,11 @@ namespace RetrospectiveGame
                 attackSuccessfullness = "Hit!";
             }
             return attackSuccessfullness;
+        }
+
+        public bool AreCharactersAlive(ICharacter char1, ICharacter char2)
+        {
+            return (char1.Life > 0 && char2.Life > 0);            
         }
 
         private string CheckForCritical(int defense, int attackBonus, int modifier)
