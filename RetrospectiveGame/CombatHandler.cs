@@ -46,7 +46,7 @@ namespace RetrospectiveGame
             {
                 attackSuccessfullness = CheckForCritical(defender.Constitution, attackBonus, modifier);
             }
-            else if (diceRoll > defender.Constitution)
+            else if (totalAttackingPower > defender.Constitution)
             {
                 attackSuccessfullness = "Hit!";
             }
