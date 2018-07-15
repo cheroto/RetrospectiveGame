@@ -22,7 +22,7 @@ namespace RetrospectiveGame
         private readonly Random randGenerator = new Random();
         public int RollDice()
         {
-            return randGenerator.Next(1, 20);
+            return randGenerator.Next(1, 21);
         }
 
         public int RollDice(int min, int max)

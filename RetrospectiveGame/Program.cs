@@ -18,11 +18,21 @@ namespace RetrospectiveGame
 
             PlotIntroText();
 
+            SetModifier(char1);
+            SetModifier(char2);
+
             ShowStats(char1);
             ShowStats(char2);
+            Console.ReadLine();
 
             DoBattle(char1, char2, combatHandler, roundNumber);
 
+        }
+
+        private static void SetModifier(Character character)
+        {
+            Console.WriteLine(string.Format("Please write modifier for Hero:", character.Name));
+            character.Modifier = int.Parse(Console.ReadLine());
         }
 
         private static void PlotIntroText()
@@ -46,7 +56,6 @@ namespace RetrospectiveGame
             Console.WriteLine();
             Console.WriteLine("***********************************");
             Console.WriteLine();
-            Console.ReadLine();
         }
 
         private static void DoBattle(ICharacter char1, ICharacter char2, ICombatHandler combatHandler, int roundNumber)
@@ -57,11 +66,11 @@ namespace RetrospectiveGame
                 BattleRound(char1, char2, combatHandler, roundNumber);
                 Console.ReadLine();
             }
-            if (char1.Life < 1) PlayChar1DeathRattle(char1);
-            else PlayChar2DeathRattle(char2);
+            if (char1.Life < 1) PlayHeroDeathRattle(char1);
+            else PlayVillainDeathRattle(char2);
         }
 
-        private static void PlayChar2DeathRattle(ICharacter character)
+        private static void PlayVillainDeathRattle(ICharacter character)
         {
             Console.Clear();
             Console.WriteLine();
@@ -77,7 +86,7 @@ namespace RetrospectiveGame
             Console.WriteLine(YouWinString);
         }
 
-        private static void PlayChar1DeathRattle(ICharacter character)
+        private static void PlayHeroDeathRattle(ICharacter character)
         {
             Console.Clear();
             Console.WriteLine();
