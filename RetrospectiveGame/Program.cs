@@ -31,7 +31,7 @@ namespace RetrospectiveGame
 
         private static void SetModifier(Character character)
         {
-            Console.WriteLine(string.Format("Please write modifier for Hero:", character.Name));
+            Console.WriteLine(string.Format("Please write modifier for {0}:", character.Name));
             character.Modifier = int.Parse(Console.ReadLine());
         }
 
