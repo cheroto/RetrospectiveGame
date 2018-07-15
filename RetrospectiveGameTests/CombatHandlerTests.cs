@@ -29,12 +29,14 @@ namespace RetrospectiveGameTests
             };
             _mockChar1.Setup(c => c.Strength).Returns(16);
             _mockChar2.Setup(c => c.Constitution).Returns(14);
+            _mockChar2.SetupProperty(c => c.Life, 28);
+
         }
 
         [TestCase(16, "Hit!")]
         [TestCase(20, "Critical!")]
         [TestCase(4, "Miss!")]
-        public void CheckIfAttackSUccessful_Success(int diceRoll, string expectedResult)
+        public void CheckIfAttackSuccessful_Success(int diceRoll, string expectedResult)
         {
             //Arrange
             _mockDice.Setup(dice => dice.RollDice()).Returns(diceRoll);
@@ -46,6 +48,20 @@ namespace RetrospectiveGameTests
             Assert.AreEqual(expectedResult, actualResult);
         }
 
+        [Test]
+        public void AttackRoundDamage_Success()
+        {
+            //Arrange
+            _mockDice.Setup(dice => dice.RollDice()).Returns(16);
+            _mockDice.Setup(dice => dice.RollDice(4, 10)).Returns(8);
+            var expectedResult = 8;
+
+            //Act
+            var actualResult = combatHandler.AttackRoundDamage(_mockChar1.Object, _mockChar2.Object);
+            
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
 
     }
 }
