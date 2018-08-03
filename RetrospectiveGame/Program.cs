@@ -3,20 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ninject;
-using Ninject.Parameters;
+using Autofac;
 
 namespace RetrospectiveGame
 {
     class Program
     {
+        private static IContainer Container { get; set; }
+
+        private const string PropertyName = "name";
+        private const string HeroName = "Lighting Bolts";
+        private const string VillainName = "Evil Sprint Destroyer Bolts";
+
         static void Main(string[] args)
         {
-            var kernal = new StandardKernel(new DiceRollerModule());
+            var builder = new ContainerBuilder();
+            builder.RegisterType<DiceRoller>().As<IDiceRoller>().SingleInstance();
+            builder.RegisterType<Character>().As<ICharacter>();
+            builder.RegisterType<CombatHandler>().As<ICombatHandler>();
+            Container = builder.Build();
 
-            var char1 = kernal.Get<Character>(new ConstructorArgument("name", "Lightning Bolts"));
-            var char2 = kernal.Get<Character>(new ConstructorArgument("name", "Evil Sprint Destroyer"));
-            var combatHandler = kernal.Get<CombatHandler>();
+            ICharacter char1;
+            ICharacter char2;
+            ICombatHandler combatHandler;
+
+            using (var scope = Container.BeginLifetimeScope())
+            {
+                char1 = scope.Resolve<ICharacter>(new NamedParameter(PropertyName, HeroName));
+                char2 = scope.Resolve<ICharacter>(new NamedParameter(PropertyName, VillainName));
+                combatHandler = scope.Resolve<ICombatHandler>();
+            }
+
             var roundNumber = 0;
 
             PlotIntroText();
@@ -32,7 +49,7 @@ namespace RetrospectiveGame
 
         }
 
-        private static void SetModifier(Character character)
+        private static void SetModifier(ICharacter character)
         {
             Console.WriteLine(string.Format("Please write modifier for {0}:", character.Name));
             character.Modifier = int.Parse(Console.ReadLine());
@@ -45,7 +62,7 @@ namespace RetrospectiveGame
             Console.WriteLine("***********************************");
         }
 
-        private static void ShowStats(Character character)
+        private static void ShowStats(ICharacter character)
         {
             Console.WriteLine();
             Console.WriteLine(string.Format("Stats for {0}:", character.Name));
