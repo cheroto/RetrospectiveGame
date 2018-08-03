@@ -29,12 +29,12 @@ namespace RetrospectiveGame
         public IDiceRoller DiceRoller { get; set; }
 
         private readonly int minAttributes = 8;
-        private readonly int maxAtrributes = 20;
+        private readonly int maxAtrributes = 21;
 
-        public Character(string name)
+        public Character(string name, IDiceRoller diceRoller)
         {
             Name = name;
-            DiceRoller = RetrospectiveGame.DiceRoller.Instance;
+            DiceRoller = diceRoller;
             SetNewStats();
         }
 

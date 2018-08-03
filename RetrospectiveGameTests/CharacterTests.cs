@@ -16,13 +16,14 @@ namespace RetrospectiveGameTests
         [SetUp]
         public void SetUp()
         {
-            _char1 = new Character("Bill");
-            _char2 = new Character("Joe");
             mockDice = new Mock<IDiceRoller>();
 
-            mockDice.Setup(dice => dice.RollDice(8, 20)).Returns(10);
+            mockDice.Setup(dice => dice.RollDice(8, 21)).Returns(10);
             mockDice.Setup(dice => dice.RollDice()).Returns(12);
-            _char1.DiceRoller = mockDice.Object;
+
+            _char1 = new Character("Bill", mockDice.Object);
+            _char2 = new Character("Joe", mockDice.Object);
+
         }
         [Test]
         public void SetNewStats_Success()

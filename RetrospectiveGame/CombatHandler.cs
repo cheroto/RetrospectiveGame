@@ -22,9 +22,9 @@ namespace RetrospectiveGame
         public IDiceRoller DiceRoller { get; set; }
         public string LastAttackStatus { get; set; }
 
-        public CombatHandler()
+        public CombatHandler(IDiceRoller diceRoller)
         {
-            DiceRoller = RetrospectiveGame.DiceRoller.Instance;
+            DiceRoller = diceRoller;
         }
 
         public int GetAttackRoundDamage(ICharacter attacker, ICharacter defender)
@@ -80,7 +80,7 @@ namespace RetrospectiveGame
                 case "Miss!":
                     return 0;
                 case "Hit!":
-                    return DiceRoller.RollDice(4, 10);
+                    return DiceRoller.RollDice(4, 11);
                 case "Critical!":
                     return 15;
                 default:

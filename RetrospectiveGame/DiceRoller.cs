@@ -9,17 +9,13 @@ namespace RetrospectiveGame
     }
     public class DiceRoller : IDiceRoller
     {
+        private readonly Random randGenerator;
 
-        private static readonly Lazy<DiceRoller> lazy =
-        new Lazy<DiceRoller>(() => new DiceRoller());
-
-        public static DiceRoller Instance { get { return lazy.Value; } }
-
-        private DiceRoller()
+        public DiceRoller()
         {
+            randGenerator =  new Random();
         }
 
-        private readonly Random randGenerator = new Random();
         public int RollDice()
         {
             return randGenerator.Next(1, 21);

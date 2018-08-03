@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ninject;
+using Ninject.Parameters;
 
 namespace RetrospectiveGame
 {
@@ -10,10 +12,11 @@ namespace RetrospectiveGame
     {
         static void Main(string[] args)
         {
+            var kernal = new StandardKernel(new DiceRollerModule());
 
-            var char1 = new Character("Lightning Bolts");
-            var char2 = new Character("Evil Sprint Destroyer");
-            var combatHandler = new CombatHandler();
+            var char1 = kernal.Get<Character>(new ConstructorArgument("name", "Lightning Bolts"));
+            var char2 = kernal.Get<Character>(new ConstructorArgument("name", "Evil Sprint Destroyer"));
+            var combatHandler = kernal.Get<CombatHandler>();
             var roundNumber = 0;
 
             PlotIntroText();
