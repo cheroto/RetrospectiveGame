@@ -11,8 +11,7 @@ namespace RetrospectiveGame
     {
         public override void Load()
         {
-            Bind<IDiceRoller>().To<DiceRoller>();
-            Bind<DiceRoller>().ToSelf().InSingletonScope();
+            Bind<IDiceRoller,DiceRoller>().To<DiceRoller>().InSingletonScope();
         }
     }
 }
