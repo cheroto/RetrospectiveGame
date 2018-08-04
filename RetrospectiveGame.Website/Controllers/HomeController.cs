@@ -47,7 +47,7 @@ namespace RetrospectiveGame.Website.Controllers
                 char2 = scope.Resolve<ICharacter>(new NamedParameter("name", "Villain"));
                 combatHandler = scope.Resolve<ICombatHandler>();
             }
-            return View(char1);
+            return View( char1);
         }
     }
 }

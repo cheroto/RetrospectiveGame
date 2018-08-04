@@ -208,7 +208,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RetrospectiveGame\RetrospectiveGame.Logic.csproj">
+    <ProjectReference Include="..\RetrospectiveGame.Logic\RetrospectiveGame.Logic.csproj">
       <Project>{3503367b-d15b-4305-b8ae-fa8da66591a5}</Project>
       <Name>RetrospectiveGame.Logic</Name>
     </ProjectReference>
