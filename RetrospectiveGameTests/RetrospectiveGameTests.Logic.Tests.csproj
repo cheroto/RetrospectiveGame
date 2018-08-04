@@ -74,9 +74,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RetrospectiveGame\RetrospectiveGame.csproj">
+    <ProjectReference Include="..\RetrospectiveGame\RetrospectiveGame.Logic.csproj">
       <Project>{3503367b-d15b-4305-b8ae-fa8da66591a5}</Project>
-      <Name>RetrospectiveGame</Name>
+      <Name>RetrospectiveGame.Logic</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

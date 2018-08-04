@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetrospectiveGame", "RetrospectiveGame\RetrospectiveGame.csproj", "{3503367B-D15B-4305-B8AE-FA8DA66591A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetrospectiveGame.Logic", "RetrospectiveGame\RetrospectiveGame.Logic.csproj", "{3503367B-D15B-4305-B8AE-FA8DA66591A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetrospectiveGameTests", "RetrospectiveGameTests\RetrospectiveGameTests.csproj", "{8F66854D-8FCC-4DC8-AFAD-BD2D63E042EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetrospectiveGameTests.Logic.Tests", "RetrospectiveGameTests\RetrospectiveGameTests.Logic.Tests.csproj", "{8F66854D-8FCC-4DC8-AFAD-BD2D63E042EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
