@@ -3,7 +3,7 @@ using NUnit.Framework;
 using RetrospectiveGame;
 using Moq;
 
-namespace RetrospectiveGameTests
+namespace RetrospectiveGame.Logic.Tests
 {
     [TestFixture]
     public class CharacterTests

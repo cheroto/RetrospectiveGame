@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RetrospectiveGame
+namespace RetrospectiveGame.Logic
 {
     public interface IDiceRoller
     {

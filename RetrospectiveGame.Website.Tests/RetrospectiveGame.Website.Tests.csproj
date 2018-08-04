@@ -98,6 +98,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RetrospectiveGame.Website\RetrospectiveGame.Website.csproj">
+      <Project>{af34d5bf-8fdb-462c-8a9c-d635e8d9172e}</Project>
+      <Name>RetrospectiveGame.Website</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -7,7 +7,7 @@ using NUnit.Framework;
 using Moq;
 using RetrospectiveGame;
 
-namespace RetrospectiveGameTests
+namespace RetrospectiveGame.Logic.Tests
 {
     [TestFixture]
     class CombatHandlerTests

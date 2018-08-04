@@ -9,8 +9,8 @@
     <ProjectGuid>{8F66854D-8FCC-4DC8-AFAD-BD2D63E042EE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RetrospectiveGameTests</RootNamespace>
-    <AssemblyName>RetrospectiveGameTests</AssemblyName>
+    <RootNamespace>RetrospectiveGame.Logic.Tests</RootNamespace>
+    <AssemblyName>RetrospectiveGame.Logic.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

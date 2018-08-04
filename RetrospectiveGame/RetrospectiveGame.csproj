@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{3503367B-D15B-4305-B8AE-FA8DA66591A5}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>RetrospectiveGame.Logic</RootNamespace>
-    <AssemblyName>RetrospectiveGame.Logic</AssemblyName>
+    <RootNamespace>RetrospectiveGame</RootNamespace>
+    <AssemblyName>RetrospectiveGame</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -52,9 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

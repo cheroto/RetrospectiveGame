@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Autofac;
 
-namespace RetrospectiveGame
+namespace RetrospectiveGame.Logic
 {
     class Program
     {
