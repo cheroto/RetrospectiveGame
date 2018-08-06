@@ -1,18 +1,22 @@
-﻿$(document).ready(function () {
+﻿$(function () {
     console.log("ready");
+    var ajaxFormSubmit = function () {
+        var $form = $(this);
+        var options = {
+            url: $form.attr("action"),
+            method: $form.attr("method"),
+            data: $form.serialize()
+        };
 
-    $("#startBattle").click(function () {
-        console.log("startBattle was clicked.")
-        UpdatePage("/Home/About");
-    });
+        $.ajax(options).done(function (data) {
+            var $target = $($form.attr("data-rg-target"));
+            $target.replaceWith(data);
+            $("#startButton").val("Next Round");
+            console.log(data);
+        });
+        return false;
+    };
+
+    $("form[data-rg-ajax='true']").submit(ajaxFormSubmit);
 });
 
-function UpdatePage(ajaxPostUrl) {
-    $.ajax({
-        type: "POST",
-        url: ajaxPostUrl,
-        success: function () {
-            location.
-        }
-    });
-}

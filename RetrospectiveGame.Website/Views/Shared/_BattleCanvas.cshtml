@@ -1,0 +1,20 @@
+﻿@model IEnumerable<ICharacter>
+@{
+    var roundResults = Session["roundResults"] as String;
+}
+
+<div id="battleCanvas">
+    @{ foreach (var character in Model)
+        {
+            @Html.Partial("_CharacterStats", character)
+        }
+    }
+    <div>
+        @{
+            if (roundResults != null && roundResults.Length > 0)
+            {
+                @roundResults
+            }
+        }
+    </div>
+</div>

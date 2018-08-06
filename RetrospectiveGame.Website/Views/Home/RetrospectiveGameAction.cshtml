@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "RetrospectiveGame";
+    var char1 = Session["char1"] as ICharacter;
+    var char2 = Session["char2"] as ICharacter;
+    IEnumerable<ICharacter> charList = new List<ICharacter>()
+    {
+        char1,
+        char2
+    };
+}
+
+<h2>Retrospective Game</h2>
+@Html.Partial("_BattleCanvas", charList)
+<br />
+
+
+
+
+<form method="post" action="@Url.Action("BattleRound")"
+      data-rg-target="#battleCanvas" data-rg-ajax="true">
+    <input id="startButton" type="submit" value="Start Battle!"/>
+</form>
