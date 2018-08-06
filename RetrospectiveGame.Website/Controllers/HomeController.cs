@@ -35,13 +35,13 @@ namespace RetrospectiveGame.Website.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
 
             return View();
         }
 
         public ActionResult RetrospectiveGameAction()
         {
+            Session["roundResults"] = null;
 
             InstantiateCharacters();
 
