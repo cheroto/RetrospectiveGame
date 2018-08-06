@@ -10,17 +10,27 @@ namespace RetrospectiveGame.Website.Controllers
 {
     public class HomeController : Controller
     {
+
         public ActionResult Index()
         {
             return View();
         }
 
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
-            return View();
+            if (Request.HttpMethod == "POST")
+            {
+                return RedirectToAction("About");
+            }
+            else
+            {
+                return View();
+            }
         }
+
 
         public ActionResult Contact()
         {
@@ -31,23 +41,36 @@ namespace RetrospectiveGame.Website.Controllers
 
         public ActionResult RetrospectiveGame()
         {
+
+            InstantiateCharacters();
+
+            return View();
+        }
+
+        public ActionResult BattleRound()
+        {
+            var char1 = Session["char1"] as Character;
+            var char2 = Session["char2"] as Character;
+
+            return
+        }
+
+        private void InstantiateCharacters()
+        {
+
             var builder = new ContainerBuilder();
             builder.RegisterType<DiceRoller>().As<IDiceRoller>().SingleInstance();
             builder.RegisterType<Character>().As<ICharacter>();
             builder.RegisterType<CombatHandler>().As<ICombatHandler>();
             var container = builder.Build();
 
-            ICharacter char1;
-            ICharacter char2;
-            ICombatHandler combatHandler;
 
             using (var scope = container.BeginLifetimeScope())
             {
-                char1 = scope.Resolve<ICharacter>(new NamedParameter("name", "LB"));
-                char2 = scope.Resolve<ICharacter>(new NamedParameter("name", "Villain"));
-                combatHandler = scope.Resolve<ICombatHandler>();
+                Session["char1"] = scope.Resolve<ICharacter>(new NamedParameter("name", "LB"));
+                Session["char2"] = scope.Resolve<ICharacter>(new NamedParameter("name", "Villain"));
+                Session["combatHandler"] = scope.Resolve<ICombatHandler>();
             }
-            return View( char1);
         }
     }
 }
