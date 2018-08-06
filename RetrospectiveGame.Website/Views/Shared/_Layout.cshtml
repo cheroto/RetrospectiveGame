@@ -6,9 +6,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery");
-    @Scripts.Render("~/bundles/jqueryval");
-    @Scripts.Render("~/bundles/customscripts")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -41,6 +38,11 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jquery");
+    @Scripts.Render("~/bundles/jqueryval");
+    @Scripts.Render("~/bundles/customscripts")
+    @Scripts.Render("~/bundles/jqueryui")
     @RenderSection("scripts", required: false)
+
 </body>
 </html>

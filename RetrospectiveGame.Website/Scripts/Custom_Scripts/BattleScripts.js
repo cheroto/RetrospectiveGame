@@ -1,4 +1,4 @@
-﻿$(function () {
+﻿$(document).ready(function () {
     console.log("ready");
     var ajaxFormSubmit = function () {
         var $form = $(this);

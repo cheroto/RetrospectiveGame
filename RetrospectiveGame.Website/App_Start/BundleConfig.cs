@@ -14,6 +14,9 @@ namespace RetrospectiveGame.Website
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+            "~/Scripts/jquery-ui*"));
+
             bundles.Add(new ScriptBundle("~/bundles/customscripts").Include(
                 "~/Scripts/Custom_Scripts/BattleScripts.js"));
 
@@ -28,6 +31,7 @@ namespace RetrospectiveGame.Website
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/jqueryui-*",
                       "~/Content/site.css"));
         }
     }
