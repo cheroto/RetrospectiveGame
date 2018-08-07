@@ -1,9 +1,16 @@
 ﻿@model RetrospectiveGame.Logic.ICharacter
 
 <table>
-    <tr><th>Character Stats</th></tr>
+    <col width="100px" />
+    <col width="300px" />
+    <tr><th colspan="2">Character Stats</th></tr>
     <tr><td>Name: </td><td>@Model.Name</td></tr>
-    <tr><td>Life: </td><td><progress max="@(Model.Constitution*2)" value="@Model.Life"></progress></td></tr>
+    <tr><td>Life: </td><td><div class="progress">
+    <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+         aria-valuenow="@(Model.Life*50/Model.Constitution)" aria-valuemin="0" aria-valuemax="@(Model.Constitution*2)" style="width:@(Model.Life*50/Model.Constitution)%">
+        @Model.Life/@(Model.Constitution*2)
+    </div>
+</div></td></tr>
     <tr><td>Constitution: </td><td>@Model.Constitution</td></tr>
     <tr><td>Strength: </td><td>@Model.Strength</td></tr>
     <tr><td>Modifier</td><td>@Model.Modifier</td></tr>
