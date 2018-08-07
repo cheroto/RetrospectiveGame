@@ -33,6 +33,20 @@
         }
     };
 
+    async function writeSlowly() {
+        var testString = "This is a test.";
+        for (i = 0; i < testString.length; i++) {
+                $("#testDiv").append(testString.charAt(i));
+                await sleep(50);
+        }
+    }
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+
     $("form[data-rg-ajax='true']").submit(ajaxFormSubmit);
+    $("#testButton").click(writeSlowly);
 });
 
